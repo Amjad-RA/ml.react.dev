@@ -1,22 +1,22 @@
 ---
-title: Adding Interactivity
+title: സംവേദനക്ഷമത നൽകാം
 ---
 
 <Intro>
 
-Some things on the screen update in response to user input. For example, clicking an image gallery switches the active image. In React, data that changes over time is called *state.* You can add state to any component, and update it as needed. In this chapter, you'll learn how to write components that handle interactions, update their state, and display different output over time.
+ഉപയോഗിക്കുന്ന ആളുടെ പ്രവർത്തന ഫലമായി സ്‌ക്രീനിൽ ചില മാറ്റങ്ങൾ സംഭവിക്കുന്നു. ഉദാഹരണം ഒരു കൂട്ടം ചിത്രങ്ങളിൽ ഒന്നിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ അത് സജീവമായി(Active) കാണിക്കുന്നു. അവസരങ്ങൾക്കനുസരിച് മാറുന്ന ഇത്തരം വിവരങ്ങളെ റിയാക്റ്റിൽ സ്റ്റേറ്റ്(State) എന്ന് വിളിക്കുന്നു. ആവശ്യാനുസരണം സ്റ്റേറ്റിനെ component യിൽ ചേർക്കുകയോ ചേർത്ത സ്റ്റേറ്റിനെ മാറ്റം വരുത്തുകയോ ചെയ്യാം. ഈ അധ്യായത്തിൽ, വിവിധ സാഹചര്യങ്ങളോട് പ്രതികരിക്കാൻ കഴിയുന്ന components എങ്ങനെ എഴുതാമെന്നും അതിൽ സ്റ്റേറ്റ് എങ്ങനെ ചേർക്കാമെന്നും അവയിൽ അനുയോജ്യമായ മാറ്റങ്ങൾ വരുത്തുന്നതെങ്ങനെ എന്നും പഠിക്കാം.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to handle user-initiated events](/learn/responding-to-events)
-* [How to make components "remember" information with state](/learn/state-a-components-memory)
-* [How React updates the UI in two phases](/learn/render-and-commit)
-* [Why state doesn't update right after you change it](/learn/state-as-a-snapshot)
-* [How to queue multiple state updates](/learn/queueing-a-series-of-state-updates)
-* [How to update an object in state](/learn/updating-objects-in-state)
-* [How to update an array in state](/learn/updating-arrays-in-state)
+* [ഉപഭോക്താവ് തുടക്കമിടുന്ന പ്രവർത്തനങ്ങൾ എങ്ങനെ കൈകാര്യം ചെയ്യും](/learn/responding-to-events)
+* [components എങ്ങനെ വിവരങ്ങൾ "ഓർക്കുന്നു"](/learn/state-a-components-memory)
+* [react എങ്ങനെ 2 ഭാഗങ്ങളായി UI(യൂസർ ഇന്റർഫേസ്)യിൽ മാറ്റങ്ങൾ വരുത്തുന്നു](/learn/render-and-commit)
+* [നിങ്ങൾ മാറ്റിയ ഉടനെ എന്തുകൊണ്ട് സ്റ്റേറ്റ് മാറുന്നില്ല](/learn/state-as-a-snapshot)
+* [ഒന്നിന് പിറകെ ഒന്നായി സ്റ്റേറ്റ് മാറ്റങ്ങളെ എങ്ങനെ ക്രമീകരിക്കാം](/learn/queueing-a-series-of-state-updates)
+* [State ഇലെ  object ഇൻ എങ്ങനെ മാറ്റം വരുത്താം ](/learn/updating-objects-in-state)
+* [State ഇലെ  array ഇൻ എങ്ങനെ മാറ്റം വരുത്താം ](/learn/updating-arrays-in-state)
 
 </YouWillLearn>
 
