@@ -4,13 +4,13 @@ title: സംവേദനക്ഷമത നൽകാം
 
 <Intro>
 
-ഉപയോഗിക്കുന്ന ആളുടെ പ്രവർത്തന ഫലമായി സ്‌ക്രീനിൽ ചില മാറ്റങ്ങൾ സംഭവിക്കുന്നു. ഉദാഹരണം ഒരു കൂട്ടം ചിത്രങ്ങളിൽ ഒന്നിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ അത് സജീവമായി(Active) കാണിക്കുന്നു. അവസരങ്ങൾക്കനുസരിച് മാറുന്ന ഇത്തരം വിവരങ്ങളെ റിയാക്റ്റിൽ സ്റ്റേറ്റ്(State) എന്ന് വിളിക്കുന്നു. ആവശ്യാനുസരണം സ്റ്റേറ്റിനെ component യിൽ ചേർക്കുകയോ ചേർത്ത സ്റ്റേറ്റിനെ മാറ്റം വരുത്തുകയോ ചെയ്യാം. ഈ അധ്യായത്തിൽ, വിവിധ സാഹചര്യങ്ങളോട് പ്രതികരിക്കാൻ കഴിയുന്ന components എങ്ങനെ എഴുതാമെന്നും അതിൽ സ്റ്റേറ്റ് എങ്ങനെ ചേർക്കാമെന്നും അവയിൽ അനുയോജ്യമായ മാറ്റങ്ങൾ വരുത്തുന്നതെങ്ങനെ എന്നും പഠിക്കാം.
+ഉപയോഗിക്കുന്ന ആളുടെ പ്രവർത്തന ഫലമായി സ്‌ക്രീനിൽ ചില മാറ്റങ്ങൾ സംഭവിക്കുന്നു. ഉദാഹരണം ഒരു കൂട്ടം ചിത്രങ്ങളിൽ ഒന്നിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ അത് സജീവമായി(Active/Selected) കാണിക്കുന്നു. അവസരങ്ങൾക്കനുസരിച് മാറുന്ന ഇത്തരം വിവരങ്ങളെ റിയാക്റ്റിൽ സ്റ്റേറ്റ്(State) എന്ന് വിളിക്കുന്നു. ആവശ്യാനുസരണം സ്റ്റേറ്റിനെ component യിൽ ചേർക്കുകയോ ചേർത്ത സ്റ്റേറ്റിനെ മാറ്റം വരുത്തുകയോ ചെയ്യാം. ഈ അധ്യായത്തിൽ, വിവിധ സാഹചര്യങ്ങളോട് പ്രതികരിക്കാൻ കഴിയുന്ന components എങ്ങനെ എഴുതാമെന്നും അതിൽ സ്റ്റേറ്റ് എങ്ങനെ ചേർക്കാമെന്നും അവയിൽ അനുയോജ്യമായ മാറ്റങ്ങൾ വരുത്തുന്നതെങ്ങനെ എന്നും പഠിക്കാം.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [ഉപഭോക്താവ് തുടക്കമിടുന്ന പ്രവർത്തനങ്ങൾ എങ്ങനെ കൈകാര്യം ചെയ്യും](/learn/responding-to-events)
+* [user തുടക്കമിടുന്ന പ്രവർത്തനങ്ങൾ എങ്ങനെ കൈകാര്യം ചെയ്യും](/learn/responding-to-events)
 * [components എങ്ങനെ വിവരങ്ങൾ "ഓർക്കുന്നു"](/learn/state-a-components-memory)
 * [react എങ്ങനെ 2 ഭാഗങ്ങളായി UI(യൂസർ ഇന്റർഫേസ്)യിൽ മാറ്റങ്ങൾ വരുത്തുന്നു](/learn/render-and-commit)
 * [നിങ്ങൾ മാറ്റിയ ഉടനെ എന്തുകൊണ്ട് സ്റ്റേറ്റ് മാറുന്നില്ല](/learn/state-as-a-snapshot)
@@ -20,11 +20,12 @@ title: സംവേദനക്ഷമത നൽകാം
 
 </YouWillLearn>
 
-## Responding to events {/*responding-to-events*/}
+## eventകളോട് പ്രതികരിക്കാം {/*responding-to-events*/}
 
-React lets you add *event handlers* to your JSX. Event handlers are your own functions that will be triggered in response to user interactions like clicking, hovering, focusing on form inputs, and so on.
+Eventകളെ കൈകാര്യം ചെയ്യാനുള്ള event handlerകളെ JSX ഇൽ കൂട്ടിച്ചേർക്കാൻ react അവസരം നൽകുന്നു. Input elementകളിൽ click ചെയ്യുന്നതും മുകളിലൂടെ(hover) മൗസ് പോയിന്റർ ചലിപ്പിക്കുന്നതും focus ചെയ്യുന്നതും കൈകാര്യം ചെയ്യാൻ കഴിയുന്ന പ്രോഗ്രാമർ ഉണ്ടാക്കുന്ന functions ആണ് event handlerകൾ.
 
-Built-in components like `<button>` only support built-in browser events like `onClick`. However, you can also create your own components, and give their event handler props any application-specific names that you like.
+ബ്രൌസർ അടിസ്ഥാനമായാ `<button>` പോലുള്ള Build-in components ബ്രൌസർ അടിസ്ഥാനമായ `onClick` പോലുള്ള events മാത്രമേ പിന്തുണക്കുകയൊള്ളു, എന്നാൽ നമ്മൾ ഉണ്ടാക്കുന്ന componentsഇൽ Props ആയി നൽകുന്ന event handlerകൾക്ക് Applicationന് അനുയോചിയമായ പേരുകൾ നൽകാവുന്നതാണ്.
+
 
 <Sandpack>
 
@@ -68,11 +69,11 @@ button { margin-right: 10px; }
 
 <LearnMore path="/learn/responding-to-events">
 
-Read **[Responding to Events](/learn/responding-to-events)** to learn how to add event handlers.
+Event  handlerകൾ നൽകുന്നത് എങ്ങനെ എന്ന് പഠിക്കാൻ ഇവിടെ വായിക്കാം**[Responding to Events](/learn/responding-to-events)**.
 
 </LearnMore>
 
-## State: a component's memory {/*state-a-components-memory*/}
+## State: componentഇന്റെ ഓർമ്മ {/*state-a-components-memory*/}
 
 Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" puts a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state.*
 
