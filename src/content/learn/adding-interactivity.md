@@ -69,22 +69,22 @@ button { margin-right: 10px; }
 
 <LearnMore path="/learn/responding-to-events">
 
-Event  handlerകൾ നൽകുന്നത് എങ്ങനെ എന്ന് പഠിക്കാൻ ഇവിടെ വായിക്കാം**[Responding to Events](/learn/responding-to-events)**.
+Event  handlerകൾ നൽകുന്നത് എങ്ങനെ എന്ന് പഠിക്കാൻ ഇവിടെ വായിക്കാം **[Responding to Events](/learn/responding-to-events)**.
 
 </LearnMore>
 
 ## State: componentഇന്റെ ഓർമ്മ {/*state-a-components-memory*/}
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" puts a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state.*
+കോംപോണന്റുകൾക്ക് ചിലപ്പോഴൊക്കെ സ്ക്രീനിൽ കാണിക്കുന്നതിൽ മാറ്റം വരുത്തേണ്ടിവരും. ഫോമിൽ ടൈപ്പ് ചെയ്യുമ്പോൾ ഇൻപുട്ട് ഫീൽഡ് അപ്ഡേറ്റ് ആവണം, ഇമേജ് കാരോസെല്ലിൽ 'അടുത്തത്(next)' ക്ലിക്ക് ചെയ്യുമ്പോൾ ചിത്രംമാറ്റണം, 'വാങ്ങുക(buy)' എന്ന ബട്ടൺ ക്ലിക്ക് ചെയ്യുമ്പോൾ ഉൽപ്പന്നം ഷോപ്പിംഗ് കാർട്ടിൽ ചേർക്കണം. ഇപ്പോൾ നൽകിയ മൂല്യം, select ചെയ്ത ചിത്രം, ഷോപ്പിംഗ് കാർട്ടിലെ ഉൽപ്പന്നങ്ങൾ എന്നിവ react componentഇന് ഓർത്തുവെക്കേണ്ടതുണ്ട് . ഈ തരത്തിലുള്ള കോംപോണന്റ്-സ്പെസിഫിക് മെമ്മറിയെ ആണ് *സ്റ്റേറ്റ് (state)* എന്ന് വിളിക്കുന്നത്. 
 
-You can add state to a component with a [`useState`](/reference/react/useState) Hook. *Hooks* are special functions that let your components use React features (state is one of those features). The `useState` Hook lets you declare a state variable. It takes the initial state and returns a pair of values: the current state, and a state setter function that lets you update it.
+[`useState`](/reference/react/useState) ഹുക്ക് ഉപയോഗിച്ച് സ്റ്റേറ്റ് ഒരു കോംപോണന്റിൽ ചേർക്കാം. *ഹുക്കുകൾ (Hooks)* പ്രത്യേക ഫംഗ്ഷനുകൾ ആണ്, കോംപോണന്റുകൾക്ക് റിയാക്ട് സവിശേഷതകൾ (സ്റ്റേറ്റ് അതിലെ ഒരു സവിശേഷതയാണ്) ഉപയോഗിക്കാനാവുന്നത് react സവിശേഷതകൾ(സ്റ്റേറ്റ് അതിലെ ഒരു സവിശേഷതയാണ്) componentഇൽ ഉപയോഗിക്കാൻ സഹായിക്കുന്ന പ്രത്യേക ഫംഗ്ഷനുകൾ ആണ് *ഹൂക്കുകൾ (Hooks)*. `useState` ഹുക്ക് നിങ്ങളെ സ്റ്റേറ്റ് വേരിയബിൾ നിർമ്മിക്കാൻ സഹായിക്കുന്നു. useState ആദ്യത്തെ വാല്യൂ(initial value) സ്വീകരിക്കുകയും stateഇന്റെ പേരും മൂല്യമാറ്റത്തിന് സഹായിക്കുന്ന "setter" ഫങ്ക്ഷനും തിരിച് തരുന്നു.
 
 ```js
 const [index, setIndex] = useState(0);
 const [showMore, setShowMore] = useState(false);
 ```
 
-Here is how an image gallery uses and updates state on click:
+ഇവിടെ ഒരു ഇമേജ് ഗാലറി ക്ലിക്കിൽ സ്റ്റേറ്റ് എങ്ങനെ ഉപയോഗിക്കുകയും അപ്ഡേറ്റ് ചെയ്യുകയും ചെയ്യുന്നു എന്ന് കാണാം:
 
 <Sandpack>
 
@@ -230,35 +230,35 @@ button {
 
 <LearnMore path="/learn/state-a-components-memory">
 
-Read **[State: A Component's Memory](/learn/state-a-components-memory)** to learn how to remember a value and update it on interaction.
+മൂല്യം ഓർത്തുവെക്കുന്നതും ഓരോ അവസരത്തിലും എങ്ങനെ മൂല്യമാറ്റം വരുത്താം എന്നും പഠിക്കാൻ **[State: ഒരു componentഇന്റെ ഓർമ്മ](/learn/state-a-components-memory)** വായിക്കുക.
 
 </LearnMore>
 
-## Render and commit {/*render-and-commit*/}
+## Render ചെയ്യലും commit ചെയ്യലും {/*render-and-commit*/}
 
-Before your components are displayed on the screen, they must be rendered by React. Understanding the steps in this process will help you think about how your code executes and explain its behavior.
+നിങ്ങളുടെ componentകൾ സ്ക്രീനിൽ പ്രദർശിപ്പിക്കുന്നതിന് മുമ്പ്, അവ റിയാക്ട് ഉപയോഗിച്ച് റെൻഡർ ചെയ്യപ്പെടണം. ഈ പ്രക്രിയയിലെ ഘട്ടങ്ങൾ മനസ്സിലാക്കുന്നതിലൂടെ നിങ്ങളുടെ കോഡ് എങ്ങനെ പ്രവർത്തിക്കുന്നു എന്നതിനെ കുറിച്ച് നിങ്ങൾക്ക് ചിന്തിക്കാനും അതിന്റെ മാറ്റങ്ങളും പ്രവർത്തനങ്ങളും വിശദീകരിക്കാനും സഹായിക്കും.
 
-Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. In this scenario, React is the waiter who puts in requests from customers and brings them their orders. This process of requesting and serving UI has three steps:
+നിങ്ങളുടെ componentകൾ അടുക്കളയിൽ രുചികരമായ വിഭവങ്ങൾ തയാറാക്കുന്ന പാചകരാണെന്ന് വിചാരിക്കുക. React ഉപഭോക്താക്കളിൽ നിന്ന് ഓർഡറുകൾ സ്വീകരിക്കുന്ന വെയ്റ്ററും. ഈ UI(User interface) അഭ്യർത്ഥനയും സേവനവും മൂന്ന് ഘട്ടങ്ങളിലായാണ് നടക്കുന്നത്:
 
-1. **Triggering** a render (delivering the diner's order to the kitchen)
-2. **Rendering** the component (preparing the order in the kitchen)
-3. **Committing** to the DOM (placing the order on the table)
+1. റെൻഡർ **ട്രിഗർ**  ചെയ്യുക (ഉപഭോക്താക്കളിൽ നിന്ന് ഓർഡർ സ്വീകരിച് അടുക്കളയിൽ എത്തിക്കുക)
+2. Component **റെൻഡർ** ചെയ്യുക (വിഭവങ്ങൾ തയാറാക്കുക)
+3. DOM-ലേക്ക് **കമ്മിറ്റ്** ചെയ്യുക (ഓർഡർ മേശയിൽ എത്തിക്കുക)
 
 <IllustrationBlock sequential>
-  <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
-  <Illustration caption="Render" alt="The Card Chef gives React a fresh Card component." src="/images/docs/illustrations/i_render-and-commit2.png" />
-  <Illustration caption="Commit" alt="React delivers the Card to the user at their table." src="/images/docs/illustrations/i_render-and-commit3.png" />
+  <Illustration caption="ട്രിഗർ" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
+  <Illustration caption="റെൻഡർ" alt="The Card Chef gives React a fresh Card component." src="/images/docs/illustrations/i_render-and-commit2.png" />
+  <Illustration caption="കമ്മിറ്റ്" alt="React delivers the Card to the user at their table." src="/images/docs/illustrations/i_render-and-commit3.png" />
 </IllustrationBlock>
 
 <LearnMore path="/learn/render-and-commit">
 
-Read **[Render and Commit](/learn/render-and-commit)** to learn the lifecycle of a UI update.
+UI (User interface) ഇലെ മാറ്റങ്ങളും അവയുടെ ജീവിത ചക്രവും(ലൈഫ് സൈക്കിൾ) മനസ്സിലാക്കാൻ  **[റെൻഡർ ചെയ്യലും കമ്മിറ്റ് ചെയ്യലും](/learn/render-and-commit)** എന്ന ഭാഗം വായിക്കുക.
 
 </LearnMore>
 
-## State as a snapshot {/*state-as-a-snapshot*/}
+## State: വേഗത്തിൽ എടുക്കുന്ന ഫോട്ടോ പോലെ {/*state-as-a-snapshot*/}
 
-Unlike regular JavaScript variables, React state behaves more like a snapshot. Setting it does not change the state variable you already have, but instead triggers a re-render. This can be surprising at first!
+സാധാരണ ജാവാസ്ക്രിപ്റ്റ് വേരിയബിളുകളിൽ നിന്നും വ്യത്യാസമായി, റിയാക്ട് സ്റ്റേറ്റ് ഒരു വേഗത്തിൽ എടുത്ത ഫോട്ടോ പോലെ ആണ്. അതിലെ മൂല്യം മാറുന്നത് പെട്ടെന്നു പ്രതിഫലിക്കുന്നില്ല, പകരം അത് ഒരു റീ-റെൻഡർ ട്രിഗർ ചെയ്യുന്നു. ഇതൊരല്പം ആശ്ചര്യപ്പെടുത്തുന്ന കാര്യമാണ്.
 
 ```js
 console.log(count);  // 0
@@ -266,7 +266,7 @@ setCount(count + 1); // Request a re-render with 1
 console.log(count);  // Still 0!
 ```
 
-This behavior help you avoid subtle bugs. Here is a little chat app. Try to guess what happens if you press "Send" first and *then* change the recipient to Bob. Whose name will appear in the `alert` five seconds later?
+ഇങ്ങനെ ചെയ്യുന്നതിലൂടെ ചില സങ്കീർണ്ണമായ പ്രശ്നങ്ങൾ മറികടക്കാൻ സഹായകമാകുന്നു. നമുക്ക് ഒരു മെസ്സേജിങ് ആപ്പിന്റെ പ്രവർത്തനം നോക്കാം. ഇവിടെ "Send" എന്ന ബട്ടൺ ക്ലിക്ക് ചെയ്ത് പെട്ടെന്ന് "Bob" എന്ന് മാറ്റുമ്പോൾ എന്താണ് സംഭവിക്കാൻ പോകുന്നതെന്ന് ഊഹിക്കാൻ ശ്രമിക്കു. 5 നിമിഷങ്ങൾക് ശേഷം തുറന്ന് വരുന്ന `alert` ബോക്സിൽ ഏത് പേരാണ് വരുന്നത്?
 
 <Sandpack>
 
@@ -315,13 +315,13 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <LearnMore path="/learn/state-as-a-snapshot">
 
-Read **[State as a Snapshot](/learn/state-as-a-snapshot)** to learn why state appears "fixed" and unchanging inside the event handlers.
+മൂല്യം മാറ്റിയിട്ടും സ്റ്റേറ്റ് മാറിയതായി തോന്നാത്തത് എന്ത് കൊണ്ടാണെന്ന് മനസിലാക്കാൻ **[State: വേഗത്തിൽ എടുക്കുന്ന ഫോട്ടോ പോലെ](/learn/state-as-a-snapshot)** എന്ന ഭാഗം വായിക്കുക.
 
 </LearnMore>
 
-## Queueing a series of state updates {/*queueing-a-series-of-state-updates*/}
+## ഒന്നിന് പിറകെ ഒന്നായി വരുന്ന ഒരുകൂട്ടം സ്റ്റേറ്റ് അപ്ഡേറ്റുകൾ {/*queueing-a-series-of-state-updates*/}
 
-This component is buggy: clicking "+3" increments the score only once.
+ഈ componentൽ ഒരു പ്രശ്നമുണ്ട്: '+3' ക്ലിക്ക് ചെയ്താൽ സ്കോർ ഒരു തവണ മാത്രമേ വർദ്ധിക്കുന്നൊള്ളു.
 
 <Sandpack>
 
