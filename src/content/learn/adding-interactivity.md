@@ -1,5 +1,5 @@
 ---
-title: സംവേദനക്ഷമത നൽകാം
+title: സംവേദനക്ഷമത(Interactivity) നൽകാം
 ---
 
 <Intro>
