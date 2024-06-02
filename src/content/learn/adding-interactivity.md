@@ -355,7 +355,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 </Sandpack>
 
-[State as a Snapshot](/learn/state-as-a-snapshot) explains why this is happening. Setting state requests a new re-render, but does not change it in the already running code. So `score` continues to be `0` right after you call `setScore(score + 1)`.
+[State: വേഗത്തിൽ എടുക്കുന്ന ഫോട്ടോ പോലെ](/learn/state-as-a-snapshot) എന്ന ഭാഗം ഇതെന്തുകൊണ്ടാണ് സംഭവിക്കുന്നതെന്ന് വിശദീകരിക്കുന്നു. സ്റ്റേറ്റ് സെറ്റ് ചെയ്യുമ്പോൾ ഒരു പുതിയ റീ-റെൻഡർ ആവശ്യപ്പെടുന്നു, പക്ഷേ ഇപ്പോഴത്തെ സ്റ്റേറ്റിൽ അത് മാറ്റങ്ങൾ വരുത്തുന്നില്ല. അതിനാൽ, `setScore(score + 1)` വിളിച്ച ശേഷവും `സ്കോർ` 0 തന്നെയായിരിക്കും..
 
 ```js
 console.log(score);  // 0
@@ -367,7 +367,7 @@ setScore(score + 1); // setScore(0 + 1);
 console.log(score);  // 0
 ```
 
-You can fix this by passing an *updater function* when setting state. Notice how replacing `setScore(score + 1)` with `setScore(s => s + 1)` fixes the "+3" button. This lets you queue multiple state updates.
+സ്റ്റേറ്റ് സെറ്റ് ചെയ്യുമ്പോൾ അപ്ഡേറ്റർ ഫംഗ്ഷൻ അതിലേക് നൽകി നിങ്ങൾക്ക് ഈ പ്രശ്നം പരിഹരിക്കാം. `setScore(score + 1)` നു പകരം `setScore(s => s + 1)` ഉപയോഗിക്കുന്നതിലൂടെ '+3' ബട്ടൺ പ്രശ്നം ശരിയാക്കുന്നതെങ്ങനെ എന്ന് നോക്കാം. ഇത് നിരവധി state അപ്ഡേറ്റുകൾ ക്യൂ ചെയ്യാൻ നിങ്ങളെ അനുവദിക്കുന്നു.
 
 <Sandpack>
 
@@ -403,15 +403,16 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 <LearnMore path="/learn/queueing-a-series-of-state-updates">
 
-Read **[Queueing a Series of State Updates](/learn/queueing-a-series-of-state-updates)** to learn how to queue a sequence of state updates.
+ഒന്നിന് പിറകെ ഒന്നായി വരുന്ന ഒരുകൂട്ടം സ്റ്റേറ്റ് അപ്ഡേറ്റുകൾ എങ്ങനെ ക്യൂ ചെയ്യാമെന്നു മനസ്സിലാക്കാൻ **[ഒന്നിന് പിറകെ ഒന്നായി വരുന്ന ഒരുകൂട്ടം സ്റ്റേറ്റ് അപ്ഡേറ്റുകൾ](/learn/queueing-a-series-of-state-updates)** വായിക്കുക.
 
 </LearnMore>
 
-## Updating objects in state {/*updating-objects-in-state*/}
+## സ്റ്റേറ്റിലെ ഒബ്ജക്റ്റുകൾ അപ്ഡേറ്റ് ചെയ്യാം {/*updating-objects-in-state*/}
 
-State can hold any kind of JavaScript value, including objects. But you shouldn't change objects and arrays that you hold in the React state directly. Instead, when you want to update an object and array, you need to create a new one (or make a copy of an existing one), and then update the state to use that copy.
+സ്റ്റേറ്റിൽ ഒബ്ജക്റ്റുകൾ അടക്കം എല്ലാ വിധ ജാവാസ്ക്രിപ്റ്റ് മൂല്യങ്ങളും(values) സൂക്ഷിക്കാം. എന്നാൽ റിയാക്ട് സ്റ്റേറ്റിലുള്ള ഒബ്ജക്റ്റുകളും Arrayകളും നേരിട്ട് മാറ്റാൻ സാധിക്കില്ല. പകരം, ഒബ്ജക്റ്റും അറേയും അപ്ഡേറ്റ് ചെയ്യേണ്ടപ്പോൾ, നിങ്ങൾക്ക് പുതിയത് സൃഷ്ടിക്കുകയോ നിലവിലുള്ളതിന്റെ പകർപ്പ് എടുത്തു ആവശ്യമായ മാറ്റങ്ങൾ ആ പകർപ്പിൽ ചെയ്തതിനു ശേഷം സ്റ്റേറ്റിൽ അപ്ഡേറ്റ് ചെയ്യുകയോ വേണം.
 
-Usually, you will use the `...` spread syntax to copy objects and arrays that you want to change. For example, updating a nested object could look like this:
+സാധാരണയായി, മാറ്റാൻ ഉദ്ദേശിക്കുന്ന ഒബ്ജക്റ്റുകളും അറേകളും കോപ്പി ചെയ്യാൻ `...` സ്പ്രെഡ് സിന്റാക്സ് ഉപയോഗിക്കാം. ഉദാഹരണത്തിന്,  സങ്കീർണ്ണമായ ഒരു ഒബ്ജക്റ്റ് അപ്ഡേറ്റ് ചെയ്യുന്നത് ഇങ്ങനെ എന്ന് കാണാം:
+
 
 <Sandpack>
 
@@ -519,7 +520,7 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-If copying objects in code gets tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code:
+കോഡിൽ ഒബ്ജക്റ്റുകൾ പകർത്തുന്നത് ബുദ്ധിമുട്ടാണെങ്കിൽ, [Immer](https://github.com/immerjs/use-immer) പോലുള്ള ലൈബ്രറി ഉപയോഗിച്ച് ആവർത്തിക്കുന്ന കോഡുകൾ കുറയ്ക്കാം:
 
 <Sandpack>
 
@@ -634,13 +635,13 @@ img { width: 200px; height: 200px; }
 
 <LearnMore path="/learn/updating-objects-in-state">
 
-Read **[Updating Objects in State](/learn/updating-objects-in-state)** to learn how to update objects correctly.
+ഒബ്ജക്റ്റുകൾ ശരിയായി എങ്ങനെ അപ്ഡേറ്റ് ചെയ്യാമെന്നു മനസ്സിലാക്കാൻ **[സ്റ്റേറ്റിലെ ഒബ്ജക്റ്റുകൾ അപ്ഡേറ്റ് ചെയ്യാം](/learn/updating-objects-in-state)** എന്ന ഭാഗം വായിക്കുക.
 
 </LearnMore>
 
-## Updating arrays in state {/*updating-arrays-in-state*/}
+## സ്റ്റേറ്റിലെ അറേകൾ അപ്ഡേറ്റ് ചെയ്യാം {/*updating-arrays-in-state*/}
 
-Arrays are another type of mutable JavaScript objects you can store in state and should treat as read-only. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array:
+അറേകൾ mutable (മാറ്റാനാകുന്ന) ജാവാസ്ക്രിപ്റ്റ് ഒബ്ജക്റ്റുകളുടെ മറ്റൊരു തരമാണ്, ഇവ സ്റ്റേറ്റിൽ സൂക്ഷിക്കാനും വായിക്കാൻ മാത്രം സാധിക്കുന്നതുമാണ്(read-only). ഒബ്ജക്റ്റുകൾ പോലെ, സ്റ്റേറ്റിൽ സൂക്ഷിച്ചിരിക്കുന്ന അറേ അപ്ഡേറ്റ് ചെയ്യേണ്ടപ്പോൾ, പുതിയത് സൃഷ്ടിക്കുകയോ നിലവിലുള്ളതിന്റെ പകർപ്പ് എടുക്കുകയോ വേണം, പിന്നീട് setState ഉപയോഗിച് അപ്ഡേറ്റ് ചെയ്യാം:
 
 <Sandpack>
 
@@ -707,7 +708,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-If copying arrays in code gets tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code:
+കോഡിൽ അറേകൾ പകർത്തുന്നത് ബുദ്ധിമുട്ടാണെങ്കിൽ, [Immer](https://github.com/immerjs/use-immer) പോലുള്ള ലൈബ്രറി ഉപയോഗിച്ച് ആവർത്തന കോഡ് കുറയ്ക്കാം[Immer](https://github.com/immerjs/use-immer):
 
 <Sandpack>
 
@@ -792,12 +793,14 @@ function ItemList({ artworks, onToggle }) {
 
 <LearnMore path="/learn/updating-arrays-in-state">
 
-Read **[Updating Arrays in State](/learn/updating-arrays-in-state)** to learn how to update arrays correctly.
+അറേകൾ ശരിയായി എങ്ങനെ അപ്ഡേറ്റ് ചെയ്യാമെന്നു മനസ്സിലാക്കാൻ **[സ്റ്റേറ്റിലെ അറേകൾ അപ്ഡേറ്റ് ചെയ്യാം](/learn/updating-arrays-in-state)** എന്ന ഭാഗം വായിക്കുക.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## അടുത്തതായി എന്താണ് പേടിക്കേണ്ടത്? {/*whats-next*/}
 
-Head over to [Responding to Events](/learn/responding-to-events) to start reading this chapter page by page!
+അടുത്തതായി, [ഇവന്റുകൾക്ക് പ്രതികരിക്കാം](/learn/responding-to-events) എന്ന ഭാഗം വായിക്കാൻ തുടങ്ങാം!
 
-Or, if you're already familiar with these topics, why not read about [Managing State](/learn/managing-state)?
+ഇവയെല്ലാം നിങ്ങൾക്ക് അറിയാവുന്ന കാര്യങ്ങളാണെങ്കിൽ, 'സ്റ്റേറ്റ് മാനേജ്മെന്റ്' വായിക്കുന്നതായിരിക്കും നല്ലത്. 
+
+നിങ്ങൾക്ക് ഇവയെല്ലാം അറിയാവുന്നതാണെങ്കിൽ, [സ്റ്റേറ്റ് മാനേജ്മെന്റ്](/learn/managing-state) വായിക്കാം.
